@@ -1,0 +1,12 @@
+
+platform :ios, '9.0'
+
+target 'JoyRequest_Example' do
+  pod 'JoyRequest', :path => '../'
+
+  target 'JoyRequest_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
