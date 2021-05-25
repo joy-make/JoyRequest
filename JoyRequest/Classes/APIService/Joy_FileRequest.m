@@ -21,7 +21,7 @@
 - (void)startUploadWithFilePath:(NSString*)filePath {
     [self configSessionManagerHeader];
     NSURL *filePathUrl = [NSURL fileURLWithPath:filePath];
-    self.task = [self.sessionManager POST:self.url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    self.task = [self.sessionManager POST:self.url parameters:self.param headers:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileURL:filePathUrl name:@"resources" error:nil];
         NSLog(@"上传文件%@", filePathUrl);
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -45,7 +45,7 @@
  */
 - (void)startUploadWithData:(NSData*)data {
     [self configSessionManagerHeader];
-    self.task = [self.sessionManager POST:self.url parameters:self.param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    self.task = [self.sessionManager POST:self.url parameters:self.param headers:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFormData:data name:@"resources"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         [self handleUploadProgress:uploadProgress];

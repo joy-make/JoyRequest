@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Joy_Request getJsonWithUrl:@"http://t.weather.sojson.com/api/weather/city/101030100" param:nil Success:^(Joy_RequestResponse *response) {
+    [Joy_Request getJsonWithUrl:@"http://127.0.0.1:8000/appConfig.json" param:nil Success:^(Joy_RequestResponse *response) {
         NSLog(@"");
     } failure:^(NSError *error) {
         NSLog(@"");

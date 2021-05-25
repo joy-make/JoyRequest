@@ -140,7 +140,7 @@ static Joy_NetManager *instance = nil;
     NSLog(@"\n请求方式：%@\n请求头： %@\n请求接口地址： %@\n请求参数：%@ \n", self.requestMethod,self.defaultHeader,self.url,self.param?:@"无参数");
 	if ([self.requestMethod isEqualToString:REQUEST_POST]) {
         
-		_task = [_sessionManager POST:self.url parameters:self.param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        _task = [_sessionManager POST:self.url parameters:self.param headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 			if (task.response && [task.response isKindOfClass:[NSHTTPURLResponse class]]) {
 				NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)task.response;
 				if (httpResponse.statusCode == 200 && self.cacheMode !=JoyRequestCachePolicyIgnoreCache) {	//返回200时缓存请求数据
@@ -153,7 +153,7 @@ static Joy_NetManager *instance = nil;
 		}];
 	}
     else if ([self.requestMethod isEqualToString:REQUEST_GET]) {
-		_task = [_sessionManager GET:self.url parameters:self.param progress:^(NSProgress * _Nonnull uploadProgress) {
+        _task = [_sessionManager GET:self.url parameters:self.param headers:@{} progress:^(NSProgress * _Nonnull uploadProgress) {
 			
 		} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 			if (task.response && [task.response isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -168,21 +168,21 @@ static Joy_NetManager *instance = nil;
 		}];
 	}
     else if ([self.requestMethod isEqualToString:REQUEST_PUT]) {
-		_task = [_sessionManager PUT:self.url parameters:self.param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        _task = [_sessionManager PUT:self.url parameters:self.param headers:@{} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 			[self handleSuccessTask:task response:responseObject];
 		} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 			[self handleFailureTask:task error:error];
 		}];
 	}
     else if ([self.requestMethod isEqualToString:REQUEST_DELETE]) {
-		_task = [_sessionManager DELETE:self.url parameters:self.param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        _task = [_sessionManager DELETE:self.url parameters:self.param headers:@{} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 			[self handleSuccessTask:task response:responseObject];
 		} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 			[self handleFailureTask:task error:error];
 		}];
     }
     else if ([self.requestMethod isEqualToString:REQUEST_PATCH]){
-        _task = [_sessionManager PATCH:self.url parameters:self.param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        _task = [_sessionManager PATCH:self.url parameters:self.param headers:@{} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self handleSuccessTask:task response:responseObject];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self handleFailureTask:task error:error];

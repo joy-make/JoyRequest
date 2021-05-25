@@ -1,6 +1,0 @@
-framework module Pods_JoyRequest_Example {
-  umbrella header "Pods-JoyRequest_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
