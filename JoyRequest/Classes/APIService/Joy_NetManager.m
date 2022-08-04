@@ -70,11 +70,8 @@ static Joy_NetManager *instance = nil;
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     if (_isFormRequest) {
         _sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        [_sessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    }else{
-        [self.defaultHeader setValuesForKeysWithDictionary:@{@"Content-Type":@"application/json",}];
     }
-    
+    [self.defaultHeader setValuesForKeysWithDictionary:@{@"Content-Type":_isFormRequest?@"application/x-www-form-urlencoded":@"application/json",}];
     __weak __typeof(&*self)weakSelf = self;
     [self.defaultHeader enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         __strong __typeof(&*weakSelf)strongSelf = weakSelf;

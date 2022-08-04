@@ -246,6 +246,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "joy-make";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = C2T74DTZAJ;
+						ProvisioningStyle = Manual;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -502,6 +506,8 @@
 			baseConfigurationReference = 2FDBDA59B51653F8879378DB /* Pods-JoyRequest_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C2T74DTZAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoyRequest/JoyRequest-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -511,8 +517,9 @@
 				);
 				INFOPLIST_FILE = "JoyRequest/JoyRequest-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ccbfintech.gasp.dajia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = dajia_Dev;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -523,6 +530,8 @@
 			baseConfigurationReference = 3997C565E7476FA621D0A88F /* Pods-JoyRequest_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoyRequest/JoyRequest-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -532,8 +541,9 @@
 				);
 				INFOPLIST_FILE = "JoyRequest/JoyRequest-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ccbfintech.gasp.dajia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
